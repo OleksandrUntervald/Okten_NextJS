@@ -9,7 +9,6 @@ type Props = {children: React.ReactNode};
 const UsersLayout = ({children}: Props) => {
     return (
         <div>
-            users Layout
     {children}
     </div>
     )

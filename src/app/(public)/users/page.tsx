@@ -1,8 +1,9 @@
+import UsersComponent from "@/app/components/Users/UsersComponent";
 
 const UsersPage = () => {
     return (
         <div>
-            UsersPage
+            <UsersComponent/>
     </div>
     )
 }
