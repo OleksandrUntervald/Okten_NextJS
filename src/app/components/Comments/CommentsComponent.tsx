@@ -1,13 +1,13 @@
 import React from 'react';
 import {apiGet} from "@/services/api.services";
 import {IComments} from "@/moduls/IComments";
-import CommentComponet from "@/app/components/Comments/CommentComponet";
+import CommentComponent from "@/app/components/Comments/CommentComponent";
 
 const CommentsComponent = async ()  => {
     const comments = await apiGet<IComments[]>(`/comments`);
     return (
         <div>
-            {comments.map((comment) =>   <CommentComponet key={comment.id} comment={comment}/> )}
+            {comments.map((comment) =>   <CommentComponent key={comment.id} comment={comment}/> )}
         </div>
     );
 };

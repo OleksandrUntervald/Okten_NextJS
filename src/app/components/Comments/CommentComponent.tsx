@@ -6,7 +6,7 @@ type CommentPropsType = {
     comment: IComments
 }
 
-const CommentComponet: FC<CommentPropsType> = ({comment}) => {
+const CommentComponent: FC<CommentPropsType> = ({comment}) => {
     return (
         <div>
             <Link
@@ -23,4 +23,4 @@ const CommentComponet: FC<CommentPropsType> = ({comment}) => {
     );
 };
 
-export default CommentComponet;
+export default CommentComponent;
