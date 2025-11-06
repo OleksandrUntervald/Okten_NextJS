@@ -1,32 +1,35 @@
 import React, {FC} from "react";
-import {apiGet} from "@/services/api.services";
 import {IUser} from "@/moduls/IUser";
 import Link from "next/link";
+import {SearchParams} from "next/dist/server/request/search-params";
 
 
 type ParamsPropsType = {
-    params: {id: string}
+    searchParams: Promise<SearchParams>;
 }
 
-const UserPage: FC<ParamsPropsType> = async ({params}) => {
+const UserPage: FC<ParamsPropsType> = async ({searchParams}) => {
 
-    const {id} = await params
-    const user = await apiGet<IUser>(`/users/${id}`);
+    const {data} = await searchParams;
+    let user = null;
+    if (typeof data === 'string'){
+        user = JSON.parse(data) as IUser;
+    }
 
     return (
-        <div style={{ padding: "20px" }}>
-            <h2>User #{user.id}</h2>
-            <p><strong>Name:</strong> {user.name}</p>
-            <p><strong>Username:</strong> {user.username}</p>
-            <p><strong>Email:</strong> {user.email}</p>
-            <p><strong>Phone:</strong> {user.phone}</p>
-            <p><strong>Website:</strong> {user.website}</p>
-            <p><strong>Company:</strong> {user.company.name}</p>
+       <div>
+           {user &&
+               <div style={{ padding: "20px" }}>
+                   <p><strong>Name:</strong> {user.name}</p>
+                   <p><strong>Username:</strong> {user.email}</p>
+                   <p><strong>Username:</strong> {user.website}</p>
 
-            <Link href="/users" style={{ color: "blue", textDecoration: "underline" }}>
-                ← Back to Users
-            </Link>
-        </div>
+                   <Link href="/comments" style={{ color: "blue", textDecoration: "underline" }}>
+                       ← Back to Comments
+                   </Link>
+               </div>
+           }
+       </div>
     );
 }
 export default UserPage;

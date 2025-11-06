@@ -9,7 +9,7 @@ type UserPropsType = {
 const UserComponent: FC<UserPropsType> = ({ user }) => {
     return (
         <Link
-            href={`/users/${user.id}`}
+            href={{pathname:`/users/${user.id}`, query: {data: JSON.stringify(user)}}}
             className="block border rounded-xl p-4 mb-2 hover:bg-gray-100 hover:shadow transition"
         >
             <p className="font-semibold text-lg text-blue-600 hover:underline">

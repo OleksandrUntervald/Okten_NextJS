@@ -1,26 +1,32 @@
 import React, {FC} from "react";
-import {apiGet} from "@/services/api.services";
 import Link from "next/link";
+import {SearchParams} from "next/dist/server/request/search-params";
 import {IPosts} from "@/moduls/IPosts";
 
 
+
 type ParamsPropsType = {
-    params: {id: string}
+    searchParams: Promise<SearchParams>
 }
 
-const CommentsPage: FC<ParamsPropsType> = async ({params}) => {
+const CommentsPage: FC<ParamsPropsType> = async ({searchParams}) => {
 
-    const {id} = await params
-    const post = await apiGet<IPosts>(`/posts/${id}`);
+    const {dataPost} = await searchParams;
+    let post = null;
+    if (typeof dataPost === 'string'){
+        post = JSON.parse(dataPost) as IPosts;
+    }
 
     return (
-        <div style={{ padding: "20px" }}>
-            <p><strong>Name:</strong> {post.title}</p>
+        <div>
+        {post &&     <div style={{ padding: "20px" }}>
+            <p><strong>Name:</strong> {post.id}</p>
             <p><strong>Username:</strong> {post.body}</p>
 
             <Link href="/posts" style={{ color: "blue", textDecoration: "underline" }}>
                 ← Back to Post
             </Link>
+        </div>}
         </div>
     );
 }
