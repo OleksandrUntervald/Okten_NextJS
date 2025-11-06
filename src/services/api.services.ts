@@ -14,5 +14,5 @@ export const apiGet = async <T>(url: string): Promise<T> => {
 // export const getAllUsers = async (): Promise<IUser[]> => {
 //         const usersFetch = await fetch('https://jsonplaceholder.typicode.com/users')
 //         .then(value => value.json())
-//       return usersFetch
+//     return usersFetch
 // }
