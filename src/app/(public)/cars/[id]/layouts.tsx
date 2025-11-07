@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
-    title: 'CommentLayout metadata'
+    title: 'CarLayout metadata'
 }
 type Props = {children: React.ReactNode};
 
-const CommentLayout = ({children}: Props) => {
+const CarLayout = ({children}: Props) => {
     return (
         <div>
 
@@ -15,4 +15,4 @@ const CommentLayout = ({children}: Props) => {
     )
 };
 
-export default CommentLayout;
+export default CarLayout;

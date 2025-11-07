@@ -9,33 +9,18 @@ export const Menu = () => {
                         href="/"
                         className="hover:text-blue-400 transition-colors duration-200"
                     >
-                        Home
+                        Create car
                     </Link>
                 </li>
                 <li>
                     <Link
-                        href="/users"
+                        href="/cars"
                         className="hover:text-blue-400 transition-colors duration-200"
                     >
-                        Users
+                        Cars
                     </Link>
                 </li>
-                <li>
-                    <Link
-                        href="/posts"
-                        className="hover:text-blue-400 transition-colors duration-200"
-                    >
-                        Posts
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        href="/comments"
-                        className="hover:text-blue-400 transition-colors duration-200"
-                    >
-                        Comments
-                    </Link>
-                </li>
+
             </ul>
         </nav>
     );

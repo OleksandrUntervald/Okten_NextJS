@@ -2,16 +2,16 @@ import type { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
-    title: 'PostsLayout metadata'
+    title: 'CarsLayout metadata'
 }
 type Props = {children: React.ReactNode};
 
-const PostsLayout = ({children}: Props) => {
+const CarsLayout = ({children}: Props) => {
     return (
         <div>
-            {children}
-        </div>
-    );
+    {children}
+    </div>
+    )
 };
 
-export default PostsLayout;
+export default CarsLayout;

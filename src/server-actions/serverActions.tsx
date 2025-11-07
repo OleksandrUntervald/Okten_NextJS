@@ -1,24 +1,21 @@
 'use server';
 
-import sql from 'better-sqlite3';
-import {revalidatePath} from "next/cache";
+import { createCar } from "@/services/api.services";
+import { revalidatePath } from "next/cache";
 
-const db = sql('meals.db');
+export const saveCars = async (formData: FormData) => {
+    // 1. Отримуємо дані з форми
+    const brand = formData.get("brand") as string;
+    const price = Number(formData.get("price"));
+    const year = Number(formData.get("year"));
 
+    if (!brand || !price || !year) {
+        throw new Error("Усі поля мають бути заповнені!");
+    }
 
-export const saveMeal = async (formData: FormData) => {
-    // console.log(formData);
-    // console.log('saveAction');
-    const titleValue = formData.get('title');
-    db.prepare(`insert into meals(title) values(?)`)
-        .run(titleValue);
-    revalidatePath('/')
-}
+    // 3. Викликаємо наш API POST запит
+    await createCar( brand, price, year );
 
-type Meal = {id:number, title: string}
-export const getMeals = async ():Promise<Meal[]> => {
-    return db.prepare<Meal[]>('select * from meals').all() as Meal[];
-}
-
-
-
+    // 4. Оновлюємо сторінку (щоб дані підвантажилися знову)
+    revalidatePath("/cars");
+};
