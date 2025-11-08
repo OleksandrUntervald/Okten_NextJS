@@ -24,8 +24,8 @@ const UserPage: FC<ParamsPropsType> = async ({searchParams}) => {
                    <p><strong>Username:</strong> {user.email}</p>
                    <p><strong>Username:</strong> {user.website}</p>
 
-                   <Link href="/comments" style={{ color: "blue", textDecoration: "underline" }}>
-                       ← Back to Comments
+                   <Link href="/users" style={{ color: "blue", textDecoration: "underline" }}>
+                       ← Back to Users
                    </Link>
                </div>
            }

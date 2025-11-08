@@ -3,6 +3,10 @@ import {getMeals, saveMeal} from "@/server-actions/serverActions";
 
 export default async function Home() {
     let mealsArray = await getMeals();
+
+
+
+
     return (
         <div className="flex min-h-screen items-center justify-center bg-white text-black">
          <Form action={saveMeal}>
@@ -14,6 +18,7 @@ export default async function Home() {
                     {meal.title}
                 </div>))}
             </div>
+
         </div>
     );
 }
